@@ -15,17 +15,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("FirstActivity",this.toString());
+        Log.d("FirstActivity","Task id is "+getTaskId());
         setContentView(R.layout.activity_main);
-
         Button button1 = (Button) findViewById(R.id.button_1);
         // 显示Intent
-//        button1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                startActivity(intent);
+            }
+        });
         // 隐式Intent
 //        button1.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -56,25 +57,39 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         // 返回数据给上一个活动
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
-                startActivityForResult(intent,1);
-            }
-        });
+//        button1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+//                startActivityForResult(intent,1);
+//            }
+//        });
+//    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        switch (requestCode){
+//            case 1:
+//                if (resultCode == RESULT_OK){
+//                    String returnedData =data.getStringExtra("data_return");
+//                    Log.d("FirActivity",returnedData);
+//                }
+//                break;
+//            default:
+//        }
+
+//        button1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this,MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        switch (requestCode){
-            case 1:
-                if (resultCode == RESULT_OK){
-                    String returnedData =data.getStringExtra("data_return");
-                    Log.d("FirActivity",returnedData);
-                }
-                break;
-            default:
-        }
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("FirstActivity","onRestart");
     }
 }
