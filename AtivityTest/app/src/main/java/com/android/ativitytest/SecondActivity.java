@@ -30,4 +30,13 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
     }
+
+    // 按返回键返回数据
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("data_return","Hello FirstActivity");
+        setResult(RESULT_OK,intent);
+        finish();
+    }
 }
