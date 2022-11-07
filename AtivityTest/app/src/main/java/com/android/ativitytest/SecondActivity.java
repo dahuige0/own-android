@@ -2,13 +2,14 @@ package com.android.ativitytest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +57,17 @@ public class SecondActivity extends AppCompatActivity {
 //        setResult(RESULT_OK,intent);
 //        finish();
 //    }
-
+    public static void actionStart(Context context, String data1, String data2){
+        Intent intent = new Intent(context,SecondActivity.class);
+        intent.putExtra("param1",data1);
+        intent.putExtra("param2",data2);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.d("SecondActivity","onDestroy");
     }
+
 }

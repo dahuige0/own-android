@@ -3,6 +3,7 @@ package com.android.ativitytest;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +21,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button button1 = (Button) findViewById(R.id.button_1);
         // 显示Intent
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
-                startActivity(intent);
-            }
-        });
+//        button1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         // 隐式Intent
 //        button1.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -85,7 +86,16 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SecondActivity.actionStart(MainActivity.this,"data1","data2");
+            }
+        });
     }
+
+
+
 
     @Override
     protected void onRestart() {
